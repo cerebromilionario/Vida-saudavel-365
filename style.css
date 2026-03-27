@@ -222,6 +222,20 @@ p{margin: 0 0 14px}
 .article-content h1{font-size: 34px}
 .article-content h2{font-size: 22px; margin-top: 22px}
 .article-content ul{padding-left: 18px}
+
+.article-byline{
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.external-sources{
+  margin: 10px 0 18px;
+}
+.external-sources a{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .toc{
   position: sticky;
   top: 90px;
