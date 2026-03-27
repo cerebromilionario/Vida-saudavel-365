@@ -23,4 +23,54 @@
       mobileNav.hidden = expanded;
     });
   }
+
+  const cookieConsentCssId = "cookieconsent-css";
+  const cookieConsentScriptId = "cookieconsent-js";
+  const cookieConsentCdnCss = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css";
+  const cookieConsentCdnJs = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js";
+
+  const initializeCookieConsent = () => {
+    if(!window.cookieconsent || !window.cookieconsent.initialise){
+      return;
+    }
+    window.cookieconsent.initialise({
+      palette: {
+        popup: {
+          background: "#0f172a",
+          text: "#f8fafc"
+        },
+        button: {
+          background: "#16a34a",
+          text: "#ffffff"
+        }
+      },
+      theme: "classic",
+      position: "bottom",
+      content: {
+        message: "Usamos cookies para melhorar sua experiência e analisar o tráfego do site.",
+        dismiss: "Aceitar",
+        link: "Política de privacidade",
+        href: "/politica-de-privacidade.html"
+      }
+    });
+  };
+
+  if(!document.getElementById(cookieConsentCssId)){
+    const cookieCss = document.createElement("link");
+    cookieCss.id = cookieConsentCssId;
+    cookieCss.rel = "stylesheet";
+    cookieCss.href = cookieConsentCdnCss;
+    document.head.appendChild(cookieCss);
+  }
+
+  if(window.cookieconsent && window.cookieconsent.initialise){
+    initializeCookieConsent();
+  } else if(!document.getElementById(cookieConsentScriptId)){
+    const cookieScript = document.createElement("script");
+    cookieScript.id = cookieConsentScriptId;
+    cookieScript.src = cookieConsentCdnJs;
+    cookieScript.defer = true;
+    cookieScript.onload = initializeCookieConsent;
+    document.head.appendChild(cookieScript);
+  }
 })();
