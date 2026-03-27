@@ -65,8 +65,11 @@
   <p class="muted">Envie sua mensagem. Respondemos assim que possível.</p>
 
   <div class="card form">
-    <form name="contato" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contato">
+    <form name="contato" method="POST" action="https://formsubmit.co/willianzacarias77@gmail.com">
+      <input type="hidden" name="_subject" value="Novo contato - Vida Saudável 365">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://vida-saudavel-365.netlify.app/contato.html?enviado=1">
       <div class="field">
         <label for="nome">Nome</label>
         <input id="nome" name="nome" required>
@@ -86,6 +89,7 @@
 
       <button class="btn btn-primary" type="submit">Enviar</button>
       <p class="muted small" style="margin-top:10px">Ao enviar, você concorda com nossa <a href="/politica-de-privacidade.html">política de privacidade</a>.</p>
+      <p class="muted small">Se for seu primeiro teste no FormSubmit, confirme o e-mail de ativação enviado por eles para liberar o recebimento das mensagens.</p>
     </form>
   </div>
 
