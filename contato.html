@@ -69,6 +69,7 @@
       <input type="hidden" name="_subject" value="Novo contato - Vida Saudável 365">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://vida-saudavel-365.netlify.app/contato.html?enviado=1">
       <div class="field">
         <label for="nome">Nome</label>
         <input id="nome" name="nome" required>
@@ -88,6 +89,7 @@
 
       <button class="btn btn-primary" type="submit">Enviar</button>
       <p class="muted small" style="margin-top:10px">Ao enviar, você concorda com nossa <a href="/politica-de-privacidade.html">política de privacidade</a>.</p>
+      <p class="muted small" data-form-success hidden style="margin-top:10px;color:#16a34a;font-weight:600">Mensagem enviada com sucesso! Obrigado pelo contato.</p>
     </form>
   </div>
 
@@ -95,6 +97,23 @@
 </div>
 
 </main>
+<script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('enviado') === '1') {
+      const successMessage = document.querySelector('[data-form-success]');
+      if (successMessage) {
+        successMessage.hidden = false;
+      }
+      if (window.history && window.history.replaceState) {
+        params.delete('enviado');
+        const query = params.toString();
+        const nextUrl = window.location.pathname + (query ? `?${query}` : '') + window.location.hash;
+        window.history.replaceState({}, document.title, nextUrl);
+      }
+    }
+  })();
+</script>
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
